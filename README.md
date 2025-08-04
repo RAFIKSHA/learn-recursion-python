@@ -206,7 +206,157 @@ print(count_digits(1234))
 ```
 4
 ```
+---
+
+## ✅ Array-based Recursion Problems
+
+### 1. Check if an array is sorted using recursion
+
+```python
+def is_sorted(arr, index=0):
+    if index == len(arr) - 1:
+        return True
+    return arr[index] <= arr[index + 1] and is_sorted(arr, index + 1)
+
+print(is_sorted([1, 2, 3, 4]))   # Output: True
+print(is_sorted([5, 3, 2]))      # Output: False
+```
 
 ---
 
+### 2. Find the maximum element in an array using recursion
 
+```python
+def find_max(arr, index=0):
+    if index == len(arr) - 1:
+        return arr[index]
+    return max(arr[index], find_max(arr, index + 1))
+
+print(find_max([3, 5, 1, 9, 6]))   # Output: 9
+```
+
+---
+
+### 3. Find the first index of a given element in array
+
+```python
+def first_index(arr, x, index=0):
+    if index == len(arr):
+        return -1
+    if arr[index] == x:
+        return index
+    return first_index(arr, x, index + 1)
+
+print(first_index([4, 2, 7, 7, 5], 7))  # Output: 2
+```
+
+---
+
+### 4. Find the last index of a given element in array
+
+```python
+def last_index(arr, x, index=0):
+    if index == len(arr):
+        return -1
+    res = last_index(arr, x, index + 1)
+    if res != -1:
+        return res
+    if arr[index] == x:
+        return index
+    return -1
+
+print(last_index([4, 2, 7, 7, 5], 7))  # Output: 3
+```
+
+---
+
+### 5. Search for an element in an array (linear search using recursion)
+
+```python
+def linear_search(arr, x, index=0):
+    if index == len(arr):
+        return False
+    if arr[index] == x:
+        return True
+    return linear_search(arr, x, index + 1)
+
+print(linear_search([1, 4, 6, 9], 6))   # Output: True
+print(linear_search([1, 4, 6, 9], 2))   # Output: False
+```
+
+---
+
+## ✅ String and Pattern Problems
+
+### 6. Reverse a string using recursion
+
+```python
+def reverse_string(s):
+    if len(s) == 0:
+        return ""
+    return reverse_string(s[1:]) + s[0]
+
+print(reverse_string("hello"))  # Output: "olleh"
+```
+
+---
+
+### 7. Check if a string is palindrome using recursion
+
+```python
+def is_palindrome(s):
+    if len(s) <= 1:
+        return True
+    if s[0] != s[-1]:
+        return False
+    return is_palindrome(s[1:-1])
+
+print(is_palindrome("madam"))  # Output: True
+print(is_palindrome("apple"))  # Output: False
+```
+
+---
+
+### 8. Replace all occurrences of 'a' with 'b' in a string using recursion
+
+```python
+def replace_a_with_b(s):
+    if len(s) == 0:
+        return ""
+    if s[0] == 'a':
+        return 'b' + replace_a_with_b(s[1:])
+    return s[0] + replace_a_with_b(s[1:])
+
+print(replace_a_with_b("apple and banana"))  # Output: "bpple bnd bbnbnb"
+```
+
+---
+
+### 9. Remove duplicates from a string using recursion
+
+```python
+def remove_duplicates(s, seen=set()):
+    if not s:
+        return ""
+    if s[0] in seen:
+        return remove_duplicates(s[1:], seen)
+    seen.add(s[0])
+    return s[0] + remove_duplicates(s[1:], seen)
+
+print(remove_duplicates("aabbccdde"))  # Output: "abcde"
+```
+
+---
+
+### 10. Count the number of vowels in a string using recursion
+
+```python
+def count_vowels(s):
+    if not s:
+        return 0
+    return (s[0].lower() in 'aeiou') + count_vowels(s[1:])
+
+print(count_vowels("Recursion is powerful"))  # Output: 8
+```
+
+---
